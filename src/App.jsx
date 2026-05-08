@@ -3,6 +3,9 @@ import logo from "./assets/fooddeliverylogo.jpg";
 import Cards from "./Cards";
 import "./Components/Category.css";
 import { FaCartArrowDown } from "react-icons/fa6";
+import Reviewcart from "./Components/Reviewcart";
+
+import { Routes, Route, Link } from "react-router-dom";
 
 const App = () => {
   const [image, setImage] = useState([]);
@@ -18,7 +21,6 @@ const App = () => {
       );
 
       const json = await data.json();
-      console.log("Swiggy API Data:", json);
 
       const imgData =
         json.data.cards[0].card.card.imageGridCards.info;
@@ -29,23 +31,9 @@ const App = () => {
     }
   };
 
-  return (
+  // HOME PAGE
+  const HomePage = () => (
     <>
-      <div className="navbar">
-        <div className="logo">
-          <img src={logo} alt="logo" />
-        </div>
-
-        <div className="title">Hungry-Hunt</div>
-        <FaCartArrowDown className="reviewcarticon" />
-        <ul className="list-items">
-          <li>Home</li>
-          <li>News</li>
-          <li>Contact</li>
-          <li>Login</li>
-        </ul>
-      </div>
-
       <div className="categoryandsearch">
         <div>All Items</div>
 
@@ -73,6 +61,37 @@ const App = () => {
           />
         ))}
       </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* NAVBAR */}
+      <div className="navbar">
+        <div className="logo">
+          <img src={logo} alt="logo" />
+        </div>
+
+        <div className="title">Hungry-Hunt</div>
+
+       
+        <div >
+          <FaCartArrowDown className="reviewcarticon" />
+        </div>
+
+        <ul className="list-items">
+          <li>Home</li>
+          <li>News</li>
+          <li>Contact</li>
+          <li>Login</li>
+        </ul>
+      </div>
+
+      {/* ROUTES */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/reviewcart" element={<Reviewcart />} />
+      </Routes>
     </>
   );
 };
