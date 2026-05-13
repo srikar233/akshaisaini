@@ -1,13 +1,20 @@
-<<<<<<< HEAD
 import React, { useContext, useState } from "react";
 import CartContext from "./Context";
 import "../Cards.css";
+import { useNavigate } from "react-router-dom";
+
 
 const ReviewCart = () => {
 
   const [count, setCount] = useState(0);
 
   const { cart } = useContext(CartContext);
+
+  const navigate=useNavigate();
+
+  const gotosuccess=()=>{
+    navigate("/successpage");
+  }
 
   return (
     <div className="reviewcartCards">
@@ -20,9 +27,8 @@ const ReviewCart = () => {
           <div key={index}>
 
             <h2>{item.name}</h2>
-
+            
             <p>{item.price}</p>
-
             <div className="quantity">
 
               <div onClick={() => setCount(count - 1)}>
@@ -44,22 +50,9 @@ const ReviewCart = () => {
           </div>
         ))
       }
-
+      <button onClick={gotosuccess}>pay</button>
     </div>
   );
 };
 
 export default ReviewCart;
-=======
-import React from 'react'
-
-const Reviewcart = () => {
-  return (
-    <div>
-        
-    </div>
-  )
-}
-
-export default Reviewcart
->>>>>>> 8e9f9d5edffa548f49d18cacefe2569cdf6f33a3

@@ -5,6 +5,7 @@ import "./Components/Category.css";
 import { FaCartArrowDown } from "react-icons/fa6";
 import Reviewcart from "./Components/Reviewcart";
 import { Routes, Route, Link } from "react-router-dom";
+import Successpage from "./Components/Successpage/Successpage";
 
 const App = () => {
   const [image, setImage] = useState([]);
@@ -68,7 +69,7 @@ const App = () => {
             items={{
               name: item.info.name,
               rating: item.info.avgRating,
-              price: item.info.costForTwo,
+              price: item.info.costForTwo.split(" ")[0],
               image: `https://media-assets.swiggy.com/swiggy/image/upload/${item.info.cloudinaryImageId}`,
             }}
           />
@@ -105,6 +106,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/reviewcart" element={<Reviewcart />} />
+        <Route path="/successpage" element={<Successpage />}/>
       </Routes>
     </>
   );
