@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useContext, useState } from "react";
 import CartContext from "./Context";
 import "../Cards.css";
@@ -49,3 +50,16 @@ const ReviewCart = () => {
 };
 
 export default ReviewCart;
+=======
+import React from 'react'
+
+const Reviewcart = () => {
+  return (
+    <div>
+        
+    </div>
+  )
+}
+
+export default Reviewcart
+>>>>>>> 8e9f9d5edffa548f49d18cacefe2569cdf6f33a3
