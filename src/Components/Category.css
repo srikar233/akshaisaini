@@ -1,0 +1,11 @@
+.categoryandsearch{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.category{
+    display: flex;
+    gap: 200px;
+    list-style: none;
+    cursor: pointer;
+}
