@@ -6,9 +6,12 @@ import { FaCartArrowDown } from "react-icons/fa6";
 import Reviewcart from "./Components/Reviewcart";
 import { Routes, Route, Link } from "react-router-dom";
 import Successpage from "./Components/Successpage/Successpage";
+import { withOpenLabel } from "./Cards";
 
 const App = () => {
   const [image, setImage] = useState([]);
+
+  const RestuarantCardOpen = withOpenLabel(Cards);
 
   useEffect(() => {
     fetchData();
@@ -63,17 +66,29 @@ const App = () => {
       </div>
 
       <div className="cards-area">
-        {image.map((item) => (
-          <Cards
-            key={item.info.id}
-            items={{
-              name: item.info.name,
-              rating: item.info.avgRating,
-              price: item.info.costForTwo.split(" ")[0],
-              image: `https://media-assets.swiggy.com/swiggy/image/upload/${item.info.cloudinaryImageId}`,
-            }}
-          />
-        ))}
+        {image.map((item) =>
+          item?.info?.availability?.opened ? (
+            <RestuarantCardOpen
+              key={item.info.id}
+              items={{
+                name: item.info.name,
+                rating: item.info.avgRating,
+                price: item.info.costForTwo.split(" ")[0],
+                image: `https://media-assets.swiggy.com/swiggy/image/upload/${item.info.cloudinaryImageId}`,
+              }}
+            />
+          ) : (
+            <Cards
+              key={item.info.id}
+              items={{
+                name: item.info.name,
+                rating: item.info.avgRating,
+                price: item.info.costForTwo.split(" ")[0],
+                image: `https://media-assets.swiggy.com/swiggy/image/upload/${item.info.cloudinaryImageId}`,
+              }}
+            />
+          )
+        )}
       </div>
     </>
   );
@@ -106,7 +121,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/reviewcart" element={<Reviewcart />} />
-        <Route path="/successpage" element={<Successpage />}/>
+        <Route path="/successpage" element={<Successpage />} />
       </Routes>
     </>
   );

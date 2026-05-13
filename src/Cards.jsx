@@ -85,3 +85,18 @@ const Cards = ({ items }) => {
 };
 
 export default Cards;
+
+// HOC
+export const withOpenLabel = (Cards) => {
+
+  return (props) => {
+
+    return (
+      <div>
+        <label className="opened">Opened</label>
+
+        <Cards {...props} />
+      </div>
+    );
+  };
+};
